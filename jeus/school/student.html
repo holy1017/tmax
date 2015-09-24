@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR" />
+<!-- <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> -->
+
+<title>JSP 예제 : StudentBean 이용</title>
+
+<!-- 모바일 웹 페이지 설정 -->
+<!-- 		<link rel="shortcut icon" href="./image/icon.png" />
+		<link rel="apple-touch-icon" href="./image/icon.png" /> -->
+<!-- 모바일 웹 페이지 설정 끝 -->
+
+<!--[if lt IE 9]>
+		<script src="./js/html5shiv.js"></script>
+		<![endif]-->
+<style type="text/css">
+body, table, input {
+	font: 12px 돋음;
+}
+
+table {
+	width: 400px;
+	border-spacing: 0px;
+	border: 1px solid #000000;
+	border-bottom: 0px;
+	text-align: center;
+}
+
+th, td {
+	border-bottom: 1px solid #000000;
+	padding: 4px;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="date"]
+	{
+	width: 180px;
+}
+
+.ls3 {
+	letter-spacing: 3px
+}
+
+.ls5 {
+	letter-spacing: 5px
+}
+</style>
+<!-- <script type="text/javascript" src="/javaBeans/js/jquery-1.11.3.min.js"></script> -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	function studentinsert() {
+		$("#student").attr({
+			"method" : "post",
+			"action" : "studentinsert.jsp"
+		});
+		$("#student").submit();
+	}
+	$(function() {
+		/* 		$("input[type='button']").click(function() {
+		 studentinsert()
+		 }) */
+	});
+</script>
+</head>
+<body>
+	<form name="student" id="student" onsubmit="return studentinsert()">
+		<table summary="학생 정보 입력">
+			<colgroup>
+				<col width="100"></col>
+				<col width="300"></col>
+			</colgroup>
+			<thead>
+				<tr>
+					<th colspan="2">학생 정보</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th class="ls3">학생 번호</th>
+					<td><input type="text" name="num" id="num" maxlength="8"
+						required="required" autofocus="autofocus" /></td>
+				</tr>
+				<tr>
+					<th class="ls3">학생 이름</th>
+					<td><input type="text" name="name" id="name" maxlength="12"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<th class="ls3">학생 아이디</th>
+					<td><input type="text" name="id" id="id" maxlength="12"
+						required="required" /></td>
+				</tr>
+				<tr>
+					<th class="ls3">비밀 번호</th>
+					<td><input type="password" name="pass" id="pass"
+						maxlength="12" required="required" /></td>
+				</tr>
+				<tr>
+					<th class="ls3">학과 번호</th>
+					<td>
+						<!-- <input type="text" name="snum" id="snum" maxlength="2"
+						required="required" /> --> <select name="snum" id="snum"
+						required="required">
+							<option value="01">컴퓨터학과</option>
+							<option value="02">교육학과</option>
+							<option value="03">신문방송학과</option>
+							<option value="04">인터넷비즈니스과</option>
+							<option value="05">기술경영과</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<th class="ls3">생년월일</th>
+					<td><input type="date" name="birth" id="birth"
+						required="required"></td>
+				</tr>
+				<tr>
+					<th class="ls3">휴대폰</th>
+					<td><input type="tel" name="tel" id="tel" maxlength="15"
+						required="required"></td>
+				</tr>
+				<tr>
+					<th class="ls5">이 메 일</th>
+					<td><input type="email" name="email" id="email" maxlength="40"
+						placeholder="Enter your email" required="required" /></td>
+				</tr>
+				<tr>
+					<th class="ls5">주소</th>
+					<td><input type="text" name="address" id="address"
+						maxlength="80" required="required" /></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><input type="submit"
+						value="입력완료" /> <input type="reset" value="다시쓰기" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+</html>
