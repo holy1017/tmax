@@ -1,1 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+">
+	<bean id="data-source-target" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<!-- 제우스에 폴을 등록한 상태 -->
+			<value>hyPool</value>
+		</property>
+	</bean>
+	<!-- mybatis layer -->
+	<!-- 
+	class SqlSessionTemplate{
+		SqlSessionFactoryBean ssfb=null;
+		SqlSessionTemplate(SqlSessionFactoryBean ssfb){
+			this.ssfb=ssfb;
+		}
+	}
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="/WEB-INF/mybatis.xml"></property>
+		<property name="dataSource" ref="data-source-target"></property>
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="deptMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="mvc.DeptMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+</beans>
