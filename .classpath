@@ -32,5 +32,10 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.wtp.jpa.DATANUCLEUS_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="jpt.jaxb;jst.jaxrs"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="jeus/WEB-INF/classes"/>
 </classpath>
